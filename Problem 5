@@ -1,0 +1,24 @@
+in = input('Input x(n): ','s');
+x = str2func(['@(n)' in]);
+
+n = 0;
+y = zeros(1,200);
+x2 = zeros(1,200);
+while n<=199
+    if n == 0
+        x2(n+1) = x(n);
+        y(n+1) = -1.5*x(n)+2*x(n+1)-0.5*x(n+2);
+    elseif (n>0 && n<198)
+        x2(n+1) = x(n);
+        y(n+1) = 0.5*x(n+1)-0.5*x(n-1);
+    elseif n == 199
+        x2(n+1) = x(n);
+        y(n+1) = 1.5*x(n)-2*x(n-1)+0.5*x(n-2);
+    end
+    n = n + 1;
+end
+
+hold on
+plot(x2,'b')
+plot(y,'m')
+legend('x(n)','y(n)')
